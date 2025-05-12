@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Your Vehicle |   Motors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Sell Page Specific Styles */
+        .sell-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.pexels.com/photos/190574/pexels-photo-190574.jpeg');
+
+            background-size: cover;
+            background-position: center;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 80px 20px;
+            margin-bottom: 40px;
+        }
+
+        
+        .sell-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .sell-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .sell-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .sell-form {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+        }
+        
+        .form-section h2 {
+            color: #304558;
+            border-bottom: 2px solid #f39c12;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .upload-area {
+            border: 2px dashed #ccc;
+            border-radius: 5px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+        }
+        
+        .upload-area:hover {
+            border-color: #f39c12;
+            background: #f9f9f9;
+        }
+        
+        .upload-area i {
+            font-size: 48px;
+            color: #f39c12;
+            margin-bottom: 15px;
+        }
+        
+        .upload-area p {
+            margin-bottom: 10px;
+        }
+        
+        .upload-area small {
+            color: #7f8c8d;
+        }
+        
+        #file-list {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        
+        .preview-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .preview-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .submit-btn {
+            background: #f39c12;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 30px auto 0;
+            text-transform: uppercase;
+            text-align: center;
+             text-decoration: none; 
+        }
+        
+        .submit-btn:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        .benefits {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 50px;
+        }
+        
+        .benefits h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .benefit-item i {
+            font-size: 40px;
+            color: #f39c12;
+            margin-bottom: 20px;
+        }
+        
+        .benefit-item h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .sell-hero {
+                padding: 60px 20px;
+            }
+            
+            .sell-hero h1 {
+                font-size: 2rem;
+            }
+            .submit-btn{
+                background: #304558;
+                padding-left: 15px;
+                
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <!-- Reuse your existing header and navigation -->
+   
+
+    
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="sell-hero">
+            <h1>Sell Your Vehicle With   Motors</h1>
+            <p>Get the best value for your used vehicle with our trusted selling platform</p>
+            <p class="bottomp">10%commison</p>
+        </section>
+        
+        <div class="sell-container">
+            <!-- Vehicle Selling Form -->
+            <form class="sell-form" id="vehicle-sell-form">
+                <!-- Vehicle Details Section -->
+                <div class="form-section">
+                    <h2>Vehicle Details</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="vehicle-type">Vehicle Type</label>
+                            <select id="vehicle-type" required>
+                                <option value="">Select Vehicle Type</option>
+                                <option value="two-wheeler">Two Wheeler</option>
+                                <option value="three-wheeler">Three Wheeler</option>
+                                <option value="four-wheeler">Four Wheeler</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="make">Vehicle Name</label>
+                            <input type="text" id="make" placeholder="E.g. Honda, Bajaj, Tata" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="year">Manufacturing Year</label>
+                            <input type="number" id="year" min="2005" max="2026" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="km-driven">Kilometers Driven</label>
+                            <input type="number" id="km-driven" placeholder="In kilometers" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fuel-type">Fuel Type</label>
+                            <select id="fuel-type" required>
+                                <option value="">Select Fuel Type</option>
+                                <option value="petrol">Petrol</option>
+                                <option value="diesel">Diesel</option>
+                                <option value="cng">CNG</option>
+                                <option value="electric">Electric</option>
+                                <!-- <option value="hybrid">Hybrid</option> -->
+                            </select>
+                        </div>
+                        
+                       
+                    </div>
+                </div>
+                
+                <!-- Pricing Section -->
+                <div class="form-section">
+                    <h2>Pricing Details</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="expected-price">Expected Price (₹)</label>
+                            <input type="number" id="expected-price" placeholder="Your expected selling price" required>
+                        </div>
+                        
+                      
+                    </div>
+                </div>
+                
+                <!-- Images Section -->
+                <div class="form-section">
+                    <h2>Upload Vehicle Images</h2>
+                    <div class="upload-area" id="upload-area">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Click to upload or drag and drop</p>
+                        <small>Upload clear images of your vehicle (Max 10 images, JPG/PNG)</small>
+                        <input type="file" id="vehicle-images" multiple accept="image/*" style="display: none;">
+                        <div id="file-list"></div>
+                    </div>
+                    
+                    <div class="preview-images" id="preview-container"></div>
+                </div>
+                
+                <!-- Additional Information -->
+                <div class="form-section">
+                    <h2>Additional Information</h2>
+                    <div class="form-group">
+                        <label for="description">Vehicle Description</label>
+                        <textarea id="description" placeholder="Describe your vehicle, any special features, modifications, or known issues"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location">Vehicle Location (City)</label>
+                        <input type="text" id="location" required>
+                    </div>
+                </div>
+                
+                <!-- Seller Information -->
+                <div class="form-section">
+                    <h2>Your Contact Information</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name" >Full Name <span style="color: red;">*</span></label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                      
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number <span style="color: red;">*</span>
+                            </label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="thankyou.html" type="submit"     class="submit-btn" >Submit Vehicle Details</a>
+            </form>
+            
+            <!-- Benefits Section -->
+            <div class="benefits">
+                <h2>Why Sell With   Motors?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <i class="fas fa-rupee-sign"></i>
+                        <h3>Best Market Price</h3>
+                        <p>We ensure you get the highest value for your vehicle based on current market trends</p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <i class="fas fa-users"></i>
+                        <h3>Wide Buyer Network</h3>
+                        <p>Your vehicle reaches thousands of genuine buyers across our platform</p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Safe & Secure</h3>
+                        <p>Verified buyers and secure payment options for worry-free transactions</p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <h3>Quick Sale</h3>
+                        <p>Average selling time 50% faster than private listings</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Reuse your existing footer here -->
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // File upload functionality
+            const uploadArea = document.getElementById('upload-area');
+            const fileInput = document.getElementById('vehicle-images');
+            const fileList = document.getElementById('file-list');
+            const previewContainer = document.getElementById('preview-container');
+            
+            uploadArea.addEventListener('click', () => fileInput.click());
+            
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#f39c12';
+                uploadArea.style.backgroundColor = '#f9f9f9';
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.style.borderColor = '#ccc';
+                uploadArea.style.backgroundColor = 'transparent';
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#ccc';
+                uploadArea.style.backgroundColor = 'transparent';
+                
+                if (e.dataTransfer.files.length) {
+                    fileInput.files = e.dataTransfer.files;
+                    handleFiles(fileInput.files);
+                }
+            });
+            
+            fileInput.addEventListener('change', () => {
+                if (fileInput.files.length) {
+                    handleFiles(fileInput.files);
+                }
+            });
+            
+            function handleFiles(files) {
+                fileList.innerHTML = '';
+                previewContainer.innerHTML = '';
+                
+                // Limit to 10 files
+                const allowedFiles = Array.from(files).slice(0, 10);
+                
+                if (allowedFiles.length < files.length) {
+                    fileList.innerHTML = `<p>Only 10 images allowed. Showing first ${allowedFiles.length}.</p>`;
+                }
+                
+                allowedFiles.forEach(file => {
+                    // Check if file is an image
+                    if (!file.type.startsWith('image/')) {
+                        return;
+                    }
+                    
+                    // Create preview
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.classList.add('preview-img');
+                        previewContainer.appendChild(img);
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
+            
+            // Form submission
+            const sellForm = document.getElementById('vehicle-sell-form');
+            sellForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Here you would normally send the data to your server
+                // For demo, we'll just show an alert
+                
+                const vehicleType = document.getElementById('vehicle-type').value;
+                const make = document.getElementById('make').value;
+                const model = document.getElementById('model').value;
+                
+                alert(`Thank you for submitting your ${make} ${model} (${vehicleType}) details! Our team will contact you shortly.`);
+                
+                // Reset form after submission
+                sellForm.reset();
+                previewContainer.innerHTML = '';
+                fileList.innerHTML = '';
+            });
+        });
+    </script>
+</body>
+</html>
