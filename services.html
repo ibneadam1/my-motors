@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rental Services</title>
+<link rel="shortcut icon" href="https://icon2.cleanpng.com/20180529/tzp/kisspng-istanbul-allah-yar-logo-clip-art-5b0d082fa4e2d1.1697079815275807196754.jpg" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #f9fafb;
+    color: #333;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .content {
+    flex: 1;
+  }
+
+  .company-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: flex-start;
+    max-width: 900px;
+    margin: 0 auto 30px;
+  }
+
+  .company-logo {
+    width: 48px;   /* small size */
+    height: 48px;
+    object-fit: contain;
+    padding-left: 18px;
+  }
+
+  .bg-color{
+    background-color: rgb(238, 238, 238);
+  }
+
+  .company-text{
+      text-align: center;
+      margin-left: 30%;
+      text-decoration: underline;
+  }
+
+  .company-text h1 {
+    font-size: 28px;
+    margin: 0;
+    color: #0077cc;
+    letter-spacing: 2px;
+  }
+
+  .company-text p {
+    font-style: italic;
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+  }
+
+  .category-icons {
+    font-size: 90px;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 40px;
+    cursor: pointer;
+  }
+  .category-icons div:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+  }
+  .vehicles-container {
+    max-width: 900px;
+    margin: 0 auto 50px;
+  }
+  .vehicles-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+  }
+  .vehicle-card {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    user-select: none;
+    transition: 0.3s;
+  }
+  .vehicle-card:hover {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
+  }
+  .vehicle-card img {
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .calculator {
+    max-width: 400px;
+    background: white;
+    margin: 0 auto 40px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  }
+  .calculator h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #0077cc;
+  }
+  .calculator label {
+    display: block;
+    margin: 12px 0 6px;
+  }
+  .calculator input, .calculator select {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  .result {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #27ae60;
+    text-align: center;
+  }
+  button.book-btn {
+    width: 100%;
+    margin-top: 25px;
+    padding: 12px;
+    font-size: 18px;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  button.book-btn:disabled {
+    background-color: #a0cfff;
+    cursor: not-allowed;
+  }
+  
+  /* Footer Styles */
+  footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 30px 0;
+    margin-top: 50px;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  
+  .footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+  }
+  
+  .footer-section h3 {
+    color: #3498db;
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+  
+  .footer-section p, .footer-section a {
+    color: #ecf0f1;
+    line-height: 1.6;
+    text-decoration: none;
+  }
+  
+  .footer-section a:hover {
+    color: #3498db;
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  
+  .social-links a {
+    color: white;
+    background-color: #34495e;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    background-color: #3498db;
+    transform: translateY(-3px);
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #34495e;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 700px) {
+    .vehicles-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .category-icons {
+      font-size: 60px;
+      gap: 30px;
+    }
+    .calculator {
+      max-width: 100%;
+      padding: 20px;
+    }
+    
+    .footer-section {
+      flex: 100%;
+      text-align: center;
+    }
+    
+    .social-links {
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .vehicles-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .category-icons {
+      font-size: 50px;
+      gap: 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+  <header>
+    <div class="bg-color">
+      <div class="company-header">
+      <img src="https://icon2.cleanpng.com/20180529/tzp/kisspng-istanbul-allah-yar-logo-clip-art-5b0d082fa4e2d1.1697079815275807196754.jpg" class="company-logo " />
+      <div class="company-text">
+        <h1>SHAHEBAZ RENTALS</h1>
+      </div>
+    </div>
+    </div>
+  </header>
+
+  <div class="category-icons" aria-label="Select Vehicle Type">
+    <div title="2 Wheeler" onclick="selectCategory(2)">🏍️</div>
+    <div title="3 Wheeler" onclick="selectCategory(3)">🛺</div>
+    <div title="4 Wheeler" onclick="selectCategory(4)">🚗</div>
+  </div>
+
+  <div class="vehicles-container" id="vehiclesContainer" style="display:none;">
+    <h2 id="vehicleTypeTitle" style="text-align:center; margin-bottom:20px;"></h2>
+    <div class="vehicles-grid" id="vehiclesGrid"></div>
+  </div>
+
+  <div class="calculator" id="calculator" style="display:none;">
+    <h2>Calculate Rental Price</h2>
+    <p style="text-align:center; font-style: italic; color:#555;">Selected Vehicle: <span id="selectedVehicleName"></span></p>
+
+    <label for="distanceInput">Enter Distance (in km):</label>
+    <input type="number" id="distanceInput" min="1" placeholder="Enter kilometers" />
+
+    <label>Price per km: ₹<span id="pricePerKm">0</span></label>
+
+    <label for="pickupLocation">Pickup Location:</label>
+    <input type="text" id="pickupLocation" placeholder="Enter pickup location" />
+
+    <label for="dropLocation">Drop Location:</label>
+    <input type="text" id="dropLocation" placeholder="Enter drop location" />
+
+    <label for="pickupDate">Pickup Date:</label>
+    <input type="date" id="pickupDate" />
+
+    <label for="pickupTime">Pickup Time:</label>
+    <input type="time" id="pickupTime" />
+
+    <label for="mobileNumber">Mobile Number:</label>
+    <input type="tel" id="mobileNumber" placeholder="Enter mobile number" pattern="[0-9]{10}" />
+
+    <div class="result" id="priceResult">Total Price: ₹0</div>
+
+    <button class="book-btn" id="bookBtn" disabled>Book Now</button>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>About Us</h3>
+      <p>SHAHEBAZ RENTALS provides quality vehicle rental services with affordable prices and excellent customer services.</p>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <p><a href="#">event booking</a></p>
+      <p><a href="#">Services</a></p>
+      <p><a href="#">Contact</a></p>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Contact Info</h3>
+      <p><i class="fas fa-map-marker-alt"></i> rajiv nagar, solapur,maharashtra India</p>
+      <p><i class="fas fa-phone"></i> +91 123456789</p>
+      <p><i class="fas fa-envelope"></i> info@shahebabzrentals.com</p>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-links">
+        <a href="#" title="ibne.___.adam"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>&copy; 2025 mustaqeem mahalatbade. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Vehicle data with real image URLs
+  const vehicles = {
+    2: [
+      {name:"HF DEULXE", image:"https://www.carandbike.com/_next/image?url=https%3A%2F%2Fimages.carandbike.com%2Fbike-images%2Fcolors%2Fhero%2Fhf-deluxe%2Fhero-hf-deluxe-gold.jpg%3Fv%3D1686044315&w=750&q=75"},
+
+      {name:"Activa 5G", image:"https://cdn.bikedekho.com/processedimages/honda/honda-activa/source/m_activa_11539345126.jpg?imwidth=412&impolicy=resize"},
+
+      {name:"Bajaj Pulsar 150", image:"https://images.news18.com/ibnlive/uploads/2022/03/bajaj-pulsar-150-164914523716x9.jpg?impolicy=website&width=640&height=360"},
+
+      {name:"Hero Splendor", image:"https://imgd.aeplcdn.com/664x374/n/bw/models/colors/hero-select-model-blue-black-1706531445236.png?q=80"},
+
+      {name:" BAJAJ CT 110", image:"https://imgd.aeplcdn.com/1280x720/n/cw/ec/95087/ct-110-right-side-view-2.png?isig=0"},
+
+      {name:"Suzuki access", image:"https://imgd.aeplcdn.com/1280x720/n/cw/ec/188491/access-125-2025-right-side-view-11.jpeg?isig=0"},
+
+      {name:"HONDA UNICORN", image:"https://bubhandari.net/wp-content/uploads/2018/10/unicorn-red-big.png"},
+
+      {name:"BULLET 350", image:"https://img.etimg.com/thumb/msid-103326996,width-480,height-360,imgsize-103540,resizemode-75/bullet-350-launched.jpg"},
+
+      {name:"Honda CB Shine", image:"https://bubhandari.net/wp-content/uploads/2018/10/black.png"},
+
+      {name:"JAWA", image:"https://www.livemint.com/lm-img/img/2024/08/22/600x338/yezdi_h_1698489286977_1724326948053.png"}
+    ],
+    3: [
+      {name:"Bajaj Auto", image:"https://tiimg.tistatic.com/fp/1/005/790/bajaj-auto-rickshaw-407.jpg"},
+
+      {name:"TVS King delxe", image:"https://www.tvsmotor.com/three-wheelers/-/media/Feature/tvs-three-wheeler/variantcolor/deluxe-yellow-right.png?la=en&h=430&w=607&hash=51423BE7CDD0BDC7F4857803F942D01D"},
+
+      {name:"Piaggio Ape Xtra LDX plus", image:"https://cdn.motorfloor.com/vehicles/three-wheeler/piaggio-ape-xtra-ldx-plus-petrol-auto.jpg"},
+
+      {name:"Mahindra Alfa", image:"https://mahindralastmilemobility.com/assets/front/images/alfa-diesel-cargo/silder/delivery-van/silder3.jpg"},
+
+      {name:"bajaj auto", image:"https://5.imimg.com/data5/SELLER/Default/2024/10/457536493/MZ/WR/FB/121470838/bajaj-auto-rickshaw-4-stroke-500x500.jpg"},
+
+      {name:"Atul Gem", image:"https://assets.tractorjunction.com/truck-junction/assets/images/truck/atul-gemcargo-other.webp"},
+
+      {name:"E-rikshaw", image:"https://truckcdn.cardekho.com/in/mahindra/treo/mahindra-treo-67242.jpg?imwidth=360&impolicy=resize"},
+
+      {name:"Kinetic 3W", image:"https://www.kineticgreen.com/uploads/media_library/Safar-Shakti_816x516_webthumb_1698233130.jpg"},
+
+      {name: "compact 4t", image:"https://www.bajajautocredit.com/uploads/vehicles/Picture11.jpg"},
+
+      {name:"bajaj x wide", image:"https://5.imimg.com/data5/PA/MJ/MN/SELLER-110022579/maxima-xwide-iso-jpg-500x500.jpg"}
+    ],
+    4: [
+      {name:" suzuki ertiga ", image:"https://imgd.aeplcdn.com/1056x594/n/p0fs93a_1572127.jpg?q=80"},
+
+      {name:"Renault Duster", image:"https://www.ppsrenault.com/uploads/gallery/1622627735_pps-renault-duster-peral-white.webp"},
+
+      {name:"hyundai creta", image:"https://www.selfdrivecar.co.in/images/20210610035741_Creta.webp"},
+
+      {name:"Volkswagen Polo", image:"https://imgd.aeplcdn.com/664x374/n/cw/ec/29628/polo-exterior-right-front-three-quarter-2.jpeg?q=80"},
+
+      {name:"Kia Seltos", image:"https://upload.wikimedia.org/wikipedia/commons/5/5c/Kia_Seltos_SP2_PE_Snow_White_Pearl_%286%29_%28cropped%29.jpg"},
+
+      {name:"Maruti Swift", image:"https://avgmotors.co.in/wp-content/uploads/2022/03/Pearl-Arctic-White-2-876x535.png"},
+
+      {name:"force motors", image:"https://imgd.aeplcdn.com/310x174/n/cw/ec/135589/trax-cruiser-exterior-right-front-three-quarter-2.jpeg?isig=0&q=80"},
+
+      {name:"Honda City", image:"https://www.hondacarindia.com/web-data/models/2023/city5thGen/Experience/Colors+/Colors/Desktop/Ar_Vk_Honda-City_3TX_Front-3-4th-Studio-Shot_Golden-Brown-Metallic_V3.png"},
+
+      {name:"Toyota Innova", image:"https://static3.toyotabharat.com/images/showroom/innova-hycross/sparkling-black-pearl-crystal-shine.png"},
+
+      {name:"mahindra bolero", image:"https://imgd.aeplcdn.com/1920x1080/n/cw/ec/131179/bolero-exterior-right-front-three-quarter-2.jpeg?isig=0&q=80&q=80"}
+    ]
+  };
+
+  const pricePerKmMap = {
+    2: 16,
+    3: 18,
+    4: 20
+  };
+
+  let selectedCategory = null;
+  let selectedVehicle = null;
+
+  function selectCategory(cat) {
+    selectedCategory = cat;
+    selectedVehicle = null;
+    document.getElementById('vehiclesContainer').style.display = 'block';
+    document.getElementById('calculator').style.display = 'none';
+    document.getElementById('vehicleTypeTitle').textContent = `Select Your ${cat}-Wheeler Vehicle`;
+    renderVehicles(cat);
+  }
+
+  function renderVehicles(cat) {
+    const container = document.getElementById('vehiclesGrid');
+    container.innerHTML = '';
+    vehicles[cat].forEach((v) => {
+      const div = document.createElement('div');
+      div.className = 'vehicle-card';
+      div.innerHTML = `
+        <img src="${v.image}" alt="${v.name}" />
+        <div>${v.name}</div>
+      `;
+      div.onclick = () => selectVehicle(v);
+      container.appendChild(div);
+    });
+  }
+
+  function selectVehicle(vehicle) {
+    selectedVehicle = vehicle;
+    const calc = document.getElementById('calculator');
+    document.getElementById('selectedVehicleName').textContent = vehicle.name;
+    document.getElementById('pricePerKm').textContent = pricePerKmMap[selectedCategory];
+    document.getElementById('distanceInput').value = '';
+    document.getElementById('pickupLocation').value = '';
+    document.getElementById('dropLocation').value = '';
+    document.getElementById('pickupDate').value = '';
+    document.getElementById('pickupTime').value = '';
+    document.getElementById('mobileNumber').value = '';
+    document.getElementById('priceResult').textContent = 'Total Price: ₹0';
+    document.getElementById('bookBtn').disabled = true;
+    calc.style.display = 'block';
+  }
+
+  function validateInputs() {
+    const distance = Number(document.getElementById('distanceInput').value);
+    const pickup = document.getElementById('pickupLocation').value.trim();
+    const drop = document.getElementById('dropLocation').value.trim();
+    const date = document.getElementById('pickupDate').value;
+    const time = document.getElementById('pickupTime').value;
+    const mobile = document.getElementById('mobileNumber').value.trim();
+    const mobilePattern = /^[0-9]{10}$/;
+    return distance > 0 && pickup && drop && date && time && mobilePattern.test(mobile);
+  }
+
+  function updatePriceAndButton() {
+    if (!selectedCategory) return;
+    const dist = Number(document.getElementById('distanceInput').value);
+    if (dist > 0) {
+      const price = dist * pricePerKmMap[selectedCategory];
+      document.getElementById('priceResult').textContent = `Total Price: ₹${price}`;
+    } else {
+      document.getElementById('priceResult').textContent = 'Total Price: ₹0';
+    }
+    document.getElementById('bookBtn').disabled = !validateInputs();
+  }
+
+  // Add event listeners to inputs
+  ['distanceInput', 'pickupLocation', 'dropLocation', 'pickupDate', 'pickupTime', 'mobileNumber'].forEach(id => {
+    document.getElementById(id).addEventListener('input', updatePriceAndButton);
+  });
+
+  document.getElementById('bookBtn').addEventListener('click', () => {
+    if (!selectedVehicle) return;
+
+    const dist = Number(document.getElementById('distanceInput').value);
+    const pickup = document.getElementById('pickupLocation').value.trim();
+    const drop = document.getElementById('dropLocation').value.trim();
+    const date = document.getElementById('pickupDate').value;
+    const time = document.getElementById('pickupTime').value;
+    const mobile = document.getElementById('mobileNumber').value.trim();
+    const price = dist * pricePerKmMap[selectedCategory];
+
+    alert(`Booking Details:
+Vehicle: ${selectedVehicle.name}
+Distance: ${dist} km
+Price: ₹${price}
+Pickup Location: ${pickup}
+Drop Location: ${drop}
+Pickup Date & Time: ${date} ${time}
+Mobile Number: ${mobile}
+
+Thank you for booking! We will contact you soon.`);
+  });
+</script>
+
+</body>
+</html>
