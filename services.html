@@ -494,48 +494,28 @@
     document.getElementById(id).addEventListener('input', updatePriceAndButton);
   });
 
+  document.getElementById('bookBtn').addEventListener('click', () => {
+    if (!selectedVehicle) return;
 
-document.getElementById('bookBtn').addEventListener('click', () => {
-  if (!selectedVehicle) return;
+    const dist = Number(document.getElementById('distanceInput').value);
+    const pickup = document.getElementById('pickupLocation').value.trim();
+    const drop = document.getElementById('dropLocation').value.trim();
+    const date = document.getElementById('pickupDate').value;
+    const time = document.getElementById('pickupTime').value;
+    const mobile = document.getElementById('mobileNumber').value.trim();
+    const price = dist * pricePerKmMap[selectedCategory];
 
-  const dist = Number(document.getElementById('distanceInput').value);
-  const pickup = document.getElementById('pickupLocation').value.trim();
-  const drop = document.getElementById('dropLocation').value.trim();
-  const date = document.getElementById('pickupDate').value;
-  const time = document.getElementById('pickupTime').value;
-  const mobile = document.getElementById('mobileNumber').value.trim();
-  const price = dist * pricePerKmMap[selectedCategory];
+    alert(`Booking Details:
+Vehicle: ${selectedVehicle.name}
+Distance: ${dist} km
+Price: ₹${price}
+Pickup Location: ${pickup}
+Drop Location: ${drop}
+Pickup Date & Time: ${date} ${time}
+Mobile Number: ${mobile}
 
-  const bookingData = {
-    vehicle: selectedVehicle.name,
-    category: selectedCategory,
-    distance: dist,
-    price: price,
-    pickup: pickup,
-    drop: drop,
-    date: date,
-    time: time,
-    mobile: mobile
-  };
-
-  fetch('book_vehicle.php', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(bookingData)
-  })
-  .then(response => response.json())
-  .then(data => {
-    alert(data.message);
-  })
-  .catch(error => {
-    console.error('Booking Error:', error);
-    alert('An error occurred. Please try again.');
+Thank you for booking! We will contact you soon.`);
   });
-});
-
-  
 </script>
 
 </body>
